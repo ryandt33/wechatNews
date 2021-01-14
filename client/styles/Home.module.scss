@@ -1,0 +1,22 @@
+.container {
+  min-height: 100vh;
+}
+
+.main {
+  & .title {
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+    background-color: rgb(35, 235, 35);
+    color: white;
+
+    & img {
+      height: 3rem;
+      padding: 5px;
+    }
+  }
+}
