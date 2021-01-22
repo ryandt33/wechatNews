@@ -6,15 +6,25 @@ const parseArticle = require("../services/parseArticle");
 const router = express.Router();
 
 router.get("/articles", async (req, res) => {
-  const articles = await Article.find();
+  const arts = await Article.find();
+  let articles = arts.reverse();
+
   console.log("Fetching article");
   console.log(articles.length);
+
+  res.json(articles);
+});
+
+router.get("/articles/id", async (req, res) => {
+  const articles = await Article.find();
+
   const arts = [];
   for (let art of articles) {
     arts.push({
       id: art._id,
       link: art.link,
       title: art.title,
+      date: art.date,
     });
   }
   res.json(arts);

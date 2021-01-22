@@ -5,14 +5,15 @@ const Article = require("../models/Article");
 
 const addArticle = async (url) => {
   const article = await axios.get(url.link);
-  console.log("prefetch");
+  const picURL = article.data.split('var msg_cdn_url = "', 2)[1];
+  const picURLFinal = picURL.split('";', 2)[0];
 
   const $ = cheerio.load(article.data);
 
   const title = $("#activity-name").text().trim();
 
-  const imgs = $("img");
-  imgURL = imgs["5"].attribs["data-src"];
+  // const imgs = $("img");
+  // imgURL = imgs["5"].attribs["data-src"];
 
   function getBase64(url) {
     console.log("Fetching image");
@@ -25,7 +26,7 @@ const addArticle = async (url) => {
       );
   }
 
-  const img = await getBase64(imgURL);
+  const img = await getBase64(picURLFinal);
 
   const art = new Article({
     title: title,
