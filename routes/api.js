@@ -12,7 +12,7 @@ router.get("/articles", async (req, res) => {
   console.log("Fetching article");
   console.log(articles.length);
 
-  res.json(articles);
+  res.json(articles.slice(0, 120));
 });
 
 router.get("/articles/id", async (req, res) => {
