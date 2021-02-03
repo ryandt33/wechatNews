@@ -82,6 +82,19 @@
     margin: auto;
     margin-right: 3rem;
     position: relative;
+    &__active {
+      transition: 0.5s;
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      text-align: auto;
+      border-radius: 100%;
+      margin: auto;
+      margin-right: 3rem;
+      position: relative;
+      background-color: darkblue;
+      color: white;
+    }
   }
 
   &__num {
